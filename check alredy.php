@@ -16,13 +16,15 @@ Route::get('contact_search', [InfluencerController::class, 'contact_search'])->n
 </style>
 <!-- ---------------------- -->
 
+<!-- also type text and 10 digit limit -->
 <div class="mt-4">
-    <label for="CONTACT" class="form-label">CONTACT</label>
-    <input type="number" class="form-control" id="CONTACT" name="contact" tabindex="3" required>
-    <span class="contact_err"></span>
+  <label for="CONTACT" class="form-label">CONTACT</label>
+  <input type="text" class="form-control" id="CONTACT" name="contact" tabindex="3" required
+      oninput="this.value = this.value.replace(/[^0-9]/g, '').slice(0, 10)">
+   <span class="contact_err"></span>
 </div>
-<!-- ---------------------- -->
 
+<!-- ---------------------- -->
 <script>
     $(document).on('change', '#CONTACT', function() {
         var contact = $("#CONTACT").val();
